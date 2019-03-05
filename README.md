@@ -1,16 +1,7 @@
 # manhang
 
-A new Flutter project.
+Flutter project for 5kb challange.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+![manhang lifecycle](https://github.com/VB10/manhang/blob/master/appflow/applife.png?raw=true)
