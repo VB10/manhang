@@ -1,0 +1,4 @@
+enum TAG{
+  login,
+  game
+}

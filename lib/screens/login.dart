@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:manhang/model/BaseEnum.dart';
+import 'package:manhang/screens/game.dart';
 
 class LoginPage extends StatefulWidget {
-  final Widget child;
-
-  LoginPage({Key key, this.child}) : super(key: key);
+  LoginPage({
+    Key key,
+  }) : super(key: key);
 
   _LoginPageState createState() => _LoginPageState();
 }
@@ -16,8 +18,11 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset(
-                "assets/images/stckmn.png",
+              Hero(
+                tag: TAG.game.toString(),
+                child: Image.asset(
+                  "assets/images/stckmn.png",
+                ),
               ),
               SizedBox(
                 height: 30,
@@ -34,9 +39,12 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         bottomNavigationBar: SafeArea(
-          
           child: FloatingActionButton(
-            onPressed: () => {},
+            onPressed: () => {
+                  Navigator.push(context, MaterialPageRoute(builder: (_) {
+                    return GameScreen();
+                  }))
+                },
             child: Icon(Icons.arrow_forward_ios),
           ),
         ));
