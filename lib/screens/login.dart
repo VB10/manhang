@@ -29,11 +29,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Text(
                 "Welcome ManHang",
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                    fontStyle: FontStyle.italic,
-                    color: Colors.black),
+                style: Theme.of(context).textTheme.title
               ),
             ],
           ),
@@ -42,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
           child: FloatingActionButton(
             onPressed: () => {
                   Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return GameScreen();
+                    return GamePage();
                   }))
                 },
             child: Icon(Icons.arrow_forward_ios),
