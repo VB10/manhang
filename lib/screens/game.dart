@@ -16,7 +16,7 @@ class _GamePageState extends State<GamePage> {
   String questionWord = "";
   final String word = "test";
   List<String> _listWord = new List<String>();
-
+  HumanModel model = new HumanModel();
   getQuestionString() {
     word.split("").forEach((f) => {_listWord.add("_")});
 
@@ -39,6 +39,9 @@ class _GamePageState extends State<GamePage> {
   void initState() {
     super.initState();
     getQuestionString();
+    for (var item in model.human) {
+      print(item);
+    }
   }
 
   void onPressOfButton() {
@@ -108,7 +111,11 @@ class _GamePageState extends State<GamePage> {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Container(color: Colors.red),
+              child: Container(
+                color: Colors.red,
+                alignment: Alignment.bottomCenter,
+                child: Text(model.human.last),
+              ),
             ),
             Expanded(
               flex: 1,
