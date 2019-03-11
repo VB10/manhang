@@ -14,35 +14,33 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Hero(
-                tag: TAG.game.toString(),
-                child: Image.asset(
-                  "assets/images/stckmn.png",
-                ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Hero(
+              tag: TAG.game.toString(),
+              child: Image.asset(
+                "assets/gif/stck.gif",
               ),
-              SizedBox(
-                height: 30,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Align(
+              alignment: Alignment.centerRight,
+              child: FloatingActionButton(
+                onPressed: () => {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) {
+                        return GamePage();
+                      }))
+                    },
+                child: Icon(Icons.arrow_forward_ios),
               ),
-              Text(
-                "Welcome ManHang",
-                style: Theme.of(context).textTheme.title
-              ),
-            ],
-          ),
+            )
+          ],
         ),
-        bottomNavigationBar: SafeArea(
-          child: FloatingActionButton(
-            onPressed: () => {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) {
-                    return GamePage();
-                  }))
-                },
-            child: Icon(Icons.arrow_forward_ios),
-          ),
-        ));
+      ),
+    );
   }
 }

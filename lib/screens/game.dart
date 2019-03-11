@@ -12,77 +12,61 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final _tfController = new TextEditingController();
-
   String questionWord = "";
   final String word = "test";
+  int wrongAnswer = 1;
   List<String> _listWord = new List<String>();
+  List<String> _errorList = ["1", "2", "3", "4", "5"];
   HumanModel model = new HumanModel();
-  getQuestionString() {
-    word.split("").forEach((f) => {_listWord.add("_")});
-
-    var k = _listWord.map((data) => "$data ");
-    var m = k.join("");
-
-    print(m);
-    setState(() {
-      questionWord = m;
-    });
-  }
 
   pigLatin(String words) => words.replaceAllMapped(
       new RegExp(r'([A-Z])', caseSensitive: false), (Match m) => "_ ");
-  //"${m[0]}_ ");
 
-  testLatin(String words, String word) => words.replaceAllMapped(
-      new RegExp(r'\b' + word, caseSensitive: false), (Match m) => "${m[0]} ");
   @override
   void initState() {
     super.initState();
-    getQuestionString();
-    for (var item in model.human) {
-      print(item);
-    }
+    setState(() {
+      questionWord = pigLatin(word);
+      _listWord = questionWord.trim().split(" ");
+    });
   }
 
   void onPressOfButton() {
-    var x = word.indexOf(_tfController.text);
-    print(x);
-    if (x >= 0) {
+    int searchIndex = word.indexOf(_tfController.text);
+
+    if (searchIndex >= 0) {
       //end game.
       if (!questionWord.contains("_")) {
-        showDialog(
-            context: this.context,
-            builder: (BuildContext context) => new AlertDialog(
-                    content: new Text(
-                  "End Game :)",
-                  style: new TextStyle(fontSize: 30.0),
-                )));
-        return;
+        endGame(true);
+      } else {
+        if (questionWord.contains(_tfController.text)) {
+          return;
+        } else {
+          convertList();
+        }
       }
-      convertList();
-      // var y = questionWord.trim().split(" ");
+    } else {
+      _tfController.text = "";
+      setState(() {
+        wrongAnswer++;
+      });
+      if (wrongAnswer == _errorList.length) {
+        endGame(false);
+      }
+      return;
+    }
+  }
 
-      // if (!y[x].contains("_")) return;
-
-      // y[x] = _tfController.text;
-      // var k = y.map((data) => "$data ");
-      // var m = k.join("");
-      // // print(y.reduce((value, element) => '$value  $element'));
-      // // print(y.map((data) => "$data "));
-      // setState(() {
-      //   questionWord = m;
-      // });
-      // print(questionWord);
-    } else {}
-
-    // List<String> _x = x.split(" ");
-
-    // String y = '${_x[0]} ' + pigLatin(_x[1]);
-
-    // setState(() {
-    //   questionWord = y;
-    // });
-    // print(y);
+  void endGame(bool result) {
+    showDialog(
+        context: this.context,
+        builder: (BuildContext context) => new AlertDialog(
+              content: Image.asset(
+                "assets/gif/${result ? "tenor" : "fail"}.gif",
+              ),
+              backgroundColor: Colors.transparent,
+            )).whenComplete(() => {Navigator.pop(context, true)});
+    return;
   }
 
   void convertList() {
@@ -91,22 +75,23 @@ class _GamePageState extends State<GamePage> {
         _listWord[i] = _tfController.text;
       }
     }
-    var k = _listWord.map((data) => "$data ");
-    var m = k.join("");
+    var _newList = _listWord.map((data) => "$data ");
+    String _questionWord = _newList.join("");
 
-    print(m);
     setState(() {
-      questionWord = m;
+      questionWord = _questionWord;
     });
-
     _tfController.text = "";
+    if (!questionWord.contains("_")) {
+      endGame(true);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.white,
+        color: Colors.red,
         child: Column(
           children: <Widget>[
             Expanded(
@@ -114,7 +99,7 @@ class _GamePageState extends State<GamePage> {
               child: Container(
                 color: Colors.red,
                 alignment: Alignment.bottomCenter,
-                child: Text(model.human.last),
+                child: Image.asset('assets/images/$wrongAnswer.png'),
               ),
             ),
             Expanded(
@@ -125,10 +110,10 @@ class _GamePageState extends State<GamePage> {
                   child: SafeArea(
                       child: Column(
                     children: <Widget>[
-                      new Text(
+                      Text(
                         questionWord,
                         style: Theme.of(context).textTheme.title,
-                        softWrap: true,
+                        softWrap: false,
                       ),
                       Container(
                         margin:
