@@ -48,7 +48,7 @@ class _GamePageState extends State<GamePage> {
     setState(() {
       _isValid = _textEC.text.isEmpty ? true : false;
     });
-    if (!_isValid) {
+    if (_isValid) {
       return;
     }
 
@@ -110,68 +110,59 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 1,
-            child: Container(
-              color: Color.fromRGBO(255, 46, 99, 1),
-              alignment: Alignment.bottomCenter,
-              child: Image.asset('assets/images/$wrongAnswer.png'),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
+      body: Container(
+        color: Color.fromRGBO(34, 40, 49, 1),
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              flex: 2,
+              child: Container(
+                color: Colors.red,
                 alignment: Alignment.bottomCenter,
-                color: Color.fromRGBO(34, 40, 49, 1),
-                child: SafeArea(
-                    child: Column(
-                  children: <Widget>[
-                    Wrap(
-                      alignment: WrapAlignment.center,
-                      children: <Widget>[
-                        Icon(
-                          Icons.help,
-                          color: Color.fromRGBO(234, 234, 234, 1),
-                          size: 45,
-                        ),
-                        Text(
-                          questionDescription.toUpperCase(),
-                          softWrap: true,
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromRGBO(255, 46, 99, 1)),
-                        )
-                      ],
-                    ),
-                    Text(
-                      questionWord,
-                      style: Theme.of(context).textTheme.title,
-                      softWrap: false,
-                    ),
-                    Align(
-                      alignment: Alignment.center,
-                      child: TextField(
+                child: Image.asset('assets/images/$wrongAnswer.png'),
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Container(
+                  color: Colors.black12,
+                  child: Column(
+                    children: <Widget>[
+                      Icon(
+                        Icons.help,
+                        color: Color.fromRGBO(234, 234, 234, 1),
+                        size: 45,
+                      ),
+                      Text(
+                        questionDescription.toUpperCase(),
+                        softWrap: true,
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      Text(
+                        questionWord,
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                      SizedBox(height: 15,),
+                      TextField(
                         controller: _textEC,
                         textAlign: TextAlign.center,
                         maxLength: 1,
-                        
                         decoration: InputDecoration(
                             icon: Icon(Icons.keyboard),
                             hintText: "Try your idea"),
-                            
                       ),
-                    ),
-                    RaisedButton(
-                      child: Text("TRY"),
-                      onPressed: onPressOfButton,
-                    ),
-                  ],
-                ))),
-          ),
-        ],
+                      RaisedButton(
+                        child: Text("TRY"),
+                        onPressed: onPressOfButton,
+                      ),
+                    ],
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
