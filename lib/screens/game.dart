@@ -17,28 +17,39 @@ class _GamePageState extends State<GamePage> {
   final _textEC = new TextEditingController();
   final String word = "";
 
+  /// The questionWord & questionDescription in this screen text.
   String questionWord = "";
   String questionDescription = "";
 
+  /// The {wrongAnswer} have user mistakes count
   int wrongAnswer = 1;
+
+  /// The {totalRights} have user health
   final int totalRights = 5;
+
+  /// The {_isValid} TextEditingController control empty text
 
   bool _isValid = true;
 
+  /// The {_listWord} question word string parse list
   List<String> _listWord = new List<String>();
 
-  pigLatin(String words) => words.replaceAllMapped(
+// {questionWord} Convert underline text.
+  pigUnderline(String words) => words.replaceAllMapped(
       new RegExp(r'([A-Z])', caseSensitive: false), (Match m) => "_ ");
 
   @override
   void initState() {
     super.initState();
+
+    /// create [_randomNumber] & create [randomLanguage]
+    /// show question any language question .
     final int _randomNumber = new Random().nextInt(LANGUAGE.values.length - 1);
     Question _question = new Question();
     final LANGUAGE randomLanguage = LANGUAGE.values[_randomNumber];
-    setState(() {
-      questionWord = pigLatin(randomLanguage.toString().split(".").last);
 
+    setState(() {
+      questionWord = pigUnderline(randomLanguage.toString().split(".").last);
       questionDescription = _question.languageWords[randomLanguage];
       _listWord = questionWord.trim().split(" ");
     });
@@ -145,7 +156,9 @@ class _GamePageState extends State<GamePage> {
                         questionWord,
                         style: Theme.of(context).textTheme.title,
                       ),
-                      SizedBox(height: 15,),
+                      SizedBox(
+                        height: 15,
+                      ),
                       TextField(
                         controller: _textEC,
                         textAlign: TextAlign.center,
