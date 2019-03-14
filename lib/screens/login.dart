@@ -2,15 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:manhang/model/BaseEnum.dart';
 import 'package:manhang/screens/game.dart';
 
-class LoginPage extends StatefulWidget {
-  LoginPage({
-    Key key,
-  }) : super(key: key);
-
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
+class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
