@@ -44,9 +44,6 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - assets/images/fast.png
-    - assets/images/man.png
-    - assets/images/stckmn.png
     - assets/gif/fail.gif
     - assets/gif/tenor.gif
     - assets/gif/stck.gif
