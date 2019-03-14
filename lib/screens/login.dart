@@ -9,7 +9,6 @@ class LoginPage extends StatelessWidget {
       return GamePage();
     }));
   }
-
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:manhang/controller/Question.dart';
+import 'package:manhang/model/BaseEnum.dart';
 
 class GamePage extends StatefulWidget {
-  GamePage({
-    Key key,
-  }) : super(key: key);
-
   @override
   _GamePageState createState() => _GamePageState();
 }
@@ -21,9 +18,7 @@ class _GamePageState extends State<GamePage> {
   int wrongAnswer = 1;
 
   /// The {_isValid} TextEditingController control empty text
-
   QuestionVC questionVC;
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +33,6 @@ class _GamePageState extends State<GamePage> {
     if (inputText.isEmpty) return;
     //if user input have in language param  will return string so return null
     var isOkey = questionVC.userOnPress(inputText) == null ? true : false;
-
     setState(() {
       wrongAnswer += isOkey ? 1 : 0;
       questionWord = !isOkey ? questionVC.convertList(inputText) : questionWord;
@@ -55,17 +49,18 @@ class _GamePageState extends State<GamePage> {
   @override
   Widget build(BuildContext acontext) {
     return Scaffold(
-        body: Container(
-      color: Color.fromRGBO(34, 40, 49, 1),
-      child: Column(
+      backgroundColor: Color.fromRGBO(34, 40, 49, 1),
+      body: Column(
         children: <Widget>[
           Expanded(
             flex: 2,
             child: Container(
-              color: Colors.red,
-              alignment: Alignment.bottomCenter,
-              child: Image.asset('assets/images/$wrongAnswer.png'),
-            ),
+                color: Colors.red,
+                alignment: Alignment.bottomCenter,
+                child: Hero(
+                  tag: TAG.game.toString(),
+                  child: Image.asset('assets/images/$wrongAnswer.png'),
+                )),
           ),
           Expanded(
             flex: 3,
@@ -118,6 +113,6 @@ class _GamePageState extends State<GamePage> {
           )
         ],
       ),
-    ));
+    );
   }
 }
