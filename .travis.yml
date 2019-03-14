@@ -10,5 +10,10 @@ dart_task:
 branches:
   only: [master]
 
+script:
+  - flutter packages get
+  - flutter test
+
+
 env:
   - FLUTTER_VERSION=dev
