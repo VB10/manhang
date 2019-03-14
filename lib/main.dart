@@ -7,10 +7,10 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
         accentColor: Colors.cyan[600],
         // Define the default Font Family
         fontFamily: 'Montserrat',
