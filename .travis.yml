@@ -1,8 +1,12 @@
 language: dart
+sudo: false
 dart:
-# Install the latest stable release
-- stable
+  - dev
+
 dart_task:
-- test: --platform vm
-- test: --platform chrome
-- dartfmt
+  - test: -p vm,firefox
+  - dartfmt
+
+# Only building master means that we don't run two builds for each pull request.
+branches:
+  only: [master]
