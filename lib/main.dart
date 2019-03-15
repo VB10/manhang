@@ -10,6 +10,7 @@ class MainPage extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // Define the default Brightness and Colors
         brightness: Brightness.dark,
         fontFamily: 'Montserrat',
         textTheme: TextTheme(
@@ -28,6 +29,7 @@ class LoginPage extends StatelessWidget {
       return GamePage();
     }));
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(

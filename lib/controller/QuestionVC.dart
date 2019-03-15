@@ -67,6 +67,8 @@ class QuestionVC {
         "that makes it easy to build simple, reliable, and efficient software.";
     questionModel.languageWords[LANGUAGE.java] =
         "is at the heart of our digital lifestyle.";
+    questionModel.languageWords[LANGUAGE.js] =
+        "Begin learning here by typing in your first name surrounded by quotation marks, and ending with a semicolon.";
     questionModel.languageWords[LANGUAGE.swift] =
         "Our goals for Swift are ambitious: we want to make programming simple things easy, and difficult things possible";
     questionModel.languageWords[LANGUAGE.kotlin] = "Dont't block keep moving";
