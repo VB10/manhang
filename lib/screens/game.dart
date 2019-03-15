@@ -10,15 +10,15 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final _textEC = new TextEditingController();
+  /*
+  Generate screen text inputText & questionWord
+  */
   String inputText = "";
 
-  /// The questionWord  in this screen text.
   String questionWord = "default";
 
-  /// The {wrongAnswer} have user mistakes count
   int wrongAnswer = 1;
 
-  /// The {_isValid} TextEditingController control empty text
   QuestionVC questionVC;
   Question questionModel;
   @override
@@ -47,6 +47,12 @@ class _GamePageState extends State<GamePage> {
       questionVC.endGame(true);
     }
     _textEC.clear();
+  }
+
+  onChange(String val) {
+    setState(() {
+      inputText = val;
+    });
   }
 
   @override
@@ -99,11 +105,7 @@ class _GamePageState extends State<GamePage> {
                         controller: _textEC,
                         textAlign: TextAlign.center,
                         maxLength: 1,
-                        onChanged: (val) {
-                          setState(() {
-                            inputText = val;
-                          });
-                        },
+                        onChanged: (val) => onChange(val),
                         decoration: InputDecoration(
                             icon: Icon(Icons.keyboard),
                             hintText: "Try your idea"),
