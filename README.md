@@ -1,3 +1,4 @@
+![travis](https://travis-ci.org/VB10/manhang.svg?branch=master)
 # manhang
 
 Flutter project for 5kb challange.
