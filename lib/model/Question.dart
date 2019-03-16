@@ -1,10 +1,7 @@
 import 'package:manhang/model/BaseEnum.dart';
-
 class Question {
-  /*
-    Generate question helper veriables.
-  */
-  List<String> listWord;
+ 
+  List<String> listWord = new List<String>();
 
   String language = "";
 
@@ -14,10 +11,5 @@ class Question {
 
   String questionWord = "";
 
-  Map<LANGUAGE, String> languageWords;
-
-  Question() {
-    listWord = new List<String>();
-    languageWords = new Map<LANGUAGE, String>();
-  }
+  Map<LANGUAGE, String> languageWords = new Map<LANGUAGE, String>();
 }

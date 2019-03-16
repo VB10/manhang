@@ -1,2 +1,2 @@
 enum TAG { login, game }
-enum LANGUAGE { go, dart, js, python, java, kotlin, swift }
+enum LANGUAGE { go, dart, python, java, swift }

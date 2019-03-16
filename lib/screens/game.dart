@@ -10,17 +10,12 @@ class GamePage extends StatefulWidget {
 
 class _GamePageState extends State<GamePage> {
   final _textEC = new TextEditingController();
-  /*
-  Generate screen text inputText & questionWord
-  */
   String inputText = "";
-
   String questionWord = "default";
-
   int wrongAnswer = 1;
-
   QuestionVC questionVC;
   Question questionModel;
+
   @override
   void initState() {
     super.initState();
@@ -32,9 +27,7 @@ class _GamePageState extends State<GamePage> {
   }
 
   tryOnPress() {
-    //The textedititng control components data
     if (inputText.isEmpty) return;
-    //if user input have in language param  will return string so return null
     var isOkey = questionVC.userOnPress(inputText) == null ? true : false;
     setState(() {
       wrongAnswer += isOkey ? 1 : 0;
