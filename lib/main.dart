@@ -54,11 +54,14 @@ class _GamePageState extends State<GamePage> {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Hero(
-            tag: TAG.game.toString(),
-            child: Image.asset(
-              'assets/images/$wrongAnswer.png',
-              height: MediaQuery.of(context).size.height * 0.5,
+          Container(
+            color: Colors.red,
+            child: Hero(
+              tag: TAG.game.toString(),
+              child: Image.asset(
+                'assets/images/$wrongAnswer.png',
+                height: MediaQuery.of(context).size.height * 0.5,
+              ),
             ),
           ),
           Icon(
@@ -78,8 +81,7 @@ class _GamePageState extends State<GamePage> {
                   inputText = val;
                 }),
             onEditingComplete: tryOnPress,
-            decoration: InputDecoration(
-                icon: Icon(Icons.keyboard), hintText: "Try word your thing"),
+            decoration: InputDecoration(hintText: "Try word your thing"),
           ),
           RaisedButton(
             child: Text("TRY"),

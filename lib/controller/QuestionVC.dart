@@ -12,16 +12,11 @@ class QuestionVC {
   QuestionVC() {
     questionModel.languageWords[LANGUAGE.dart] =
         "helps you craft beautiful, high-quality experiences across all screens";
-    questionModel.language = getRandomLanguage();
-    questionModel.questionWord = pigUnderline(questionModel.language);
+    questionModel.language = LANGUAGE.dart.toString();
+    questionModel.questionWord =
+        pigUnderline(questionModel.language).split(".").last;
+    questionModel.questionDescription = questionModel.languageWords[LANGUAGE.dart];
     questionModel.listWord = questionModel.questionWord.trim().split(" ");
-  }
-  String getRandomLanguage() {
-    final LANGUAGE randomLanguage =
-        LANGUAGE.values[new Random().nextInt(LANGUAGE.values.length - 1)];
-    questionModel.questionDescription =
-        questionModel.languageWords[randomLanguage];
-    return randomLanguage.toString().split(".").last;
   }
 
   String convertList(String inputValue) {
